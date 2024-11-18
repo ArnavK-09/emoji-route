@@ -2,7 +2,7 @@
 <h2 align="center">The Ultimate Route for Generating Emoji Images</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://github.com/ArnavK-09.png" />
+    <img alt="hero" width="450" src="https://emoji-route.deno.dev/gif/🎈" />
 </p>
 
 > [!NOTE] **emoji-route** allows users to request images of emojis in multiple
