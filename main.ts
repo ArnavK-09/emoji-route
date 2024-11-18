@@ -17,11 +17,12 @@ const getRandomElement = <T>(array: T[]): T => {
 
 // Function to generate an SVG image containing the provided emoji
 const emojiToSvg = (emoji: string): string =>
-  `<svg xmlns="http://www.w3.org/2000/svg" width='128' height='145' viewBox="0 0 128 128">
-<text x="50%"  y="50%" text-anchor="middle" dominant-baseline="middle" font-size="100">
+  `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 -5 128 128">
+<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="100">
   ${emoji}
 </text>
-</svg>`;
+</svg>
+`;
 
 // Function to extract the first emoji from a string (or return the default emoji if none found)
 const fetchEmojiFromString = (txt: string): string => {
@@ -38,7 +39,7 @@ const fetchEmojiFromString = (txt: string): string => {
 
 // Function to create a PNG image from an emoji
 const emojiToPng = async (emoji: string) => {
-  const size = 128; // Define canvas size
+  const size = 1024; // Define canvas size
   const canvas = createCanvas(size, size); // Create a new canvas
   const ctx = canvas.getContext("2d"); // Get the 2D drawing context
 
@@ -47,10 +48,10 @@ const emojiToPng = async (emoji: string) => {
   canvas.loadFont(font, { family: "Noto Color Emoji" });
 
   // Set the font size and style
-  ctx.font = "100px Noto Color Emoji";
+  ctx.font = "800px Noto Color Emoji";
 
   // Draw the emoji at a fixed position on the canvas
-  ctx.fillText(emoji, 0, 100); // This could be fixed to center the text, adjusted below
+  ctx.fillText(emoji, 0, 800); // This could be fixed to center the text, adjusted below
 
   // Return the canvas as a PNG image buffer
   return canvas.toBuffer("image/png");
@@ -83,16 +84,15 @@ const gifRoute = async (c: Context): Promise<Response> => {
   const emojiUnicode = emojiToUnicode(fetchedEmoji);
 
   // Construct the URL for the emoji GIF
-  let gEmojiUrl =
-    `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiUnicode}/512.gif`;
+  let gEmojiUrl = `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiUnicode}/512.gif`;
 
   // Check if the GIF URL is valid
   const res = await fetch(gEmojiUrl);
   if (!res.ok) {
     // Fallback to the default emoji GIF if the URL is invalid
-    gEmojiUrl = `https://fonts.gstatic.com/s/e/notoemoji/latest/${
-      emojiToUnicode(DEFAULT_EMOJI)
-    }/512.gif`;
+    gEmojiUrl = `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiToUnicode(
+      DEFAULT_EMOJI,
+    )}/512.gif`;
   }
 
   // Fetch the GIF image data
@@ -144,7 +144,7 @@ app.get("/:emoji", (c) => {
 
 // Basic home route to check if the server is running
 app.get("/", async (c) => {
-  return c.html(new TextDecoder().decode(await Deno.readFile('./index.html')));
+  return c.html(new TextDecoder().decode(await Deno.readFile("./index.html")));
 });
 
 // Start the server and listen for incoming requests

@@ -5,7 +5,9 @@
     <img alt="hero" width="450" src="https://emoji-route.deno.dev/gif/🎈" />
 </p>
 
-> [!NOTE] **emoji-route** allows users to request images of emojis in multiple
+> [!NOTE]
+>
+> **emoji-route** allows users to request images of emojis in multiple
 > formats including PNG, SVG, and GIF. This is perfect for applications that
 > need dynamic emoji handling or custom emoji display in different formats.
 
