@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎈 emoji-route 🎈</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        h1,
+        h2 {
+            text-align: center;
+        }
+
+        p {
+            text-align: center;
+            padding: 10px;
+            max-width: 80%;
+            display: block;
+            margin: auto;
+        }
+
+        pre {
+            background-color: #2d2d2d;
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        .hero-image {
+            width: 450px;
+        }
+
+        .content {
+            margin: 20px;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .features,
+        .routes,
+        .stack {
+            margin-bottom: 30px;
+        }
+
+        .feature-item,
+        .route-item,
+        .stack-item {
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        table td {
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1><a href="//github.com/ArnavK-09/emoji-route">🎈 emoji-route 🎈</a></h1>
+    <h2>The Ultimate Route for Generating Emoji Images</h2>
+
+    <p>
+        <img class="hero-image" alt="hero" src="https://github.com/ArnavK-09.png" />
+    </p>
+
+    <p><strong>emoji-route</strong> allows users to request images of emojis in multiple formats including PNG, SVG, and
+        GIF. This is perfect for applications that need dynamic emoji handling or custom emoji display in different
+        formats.</p>
+
+    <div class="content">
+        <h3>🌟 Features</h3>
+        <ul class="features">
+            <li class="feature-item"><strong>SVG Emoji Generation</strong> – Generates an SVG image containing the
+                requested emoji.</li>
+            <li class="feature-item"><strong>PNG Emoji Generation</strong> – Creates a PNG image using the canvas module
+                with custom fonts for emojis.</li>
+            <li class="feature-item"><strong>GIF Emoji Fetching</strong> – Fetches and serves emoji GIFs directly from a
+                reliable source.</li>
+            <li class="feature-item"><strong>Random Format Response</strong> – Allows users to get a random emoji format
+                (SVG, PNG, or GIF) with just one request.</li>
+            <li class="feature-item"><strong>Fallbacks for Missing Emojis</strong> – In case an emoji isn't found, the
+                app uses a default emoji (💩) to ensure smooth operation.</li>
+        </ul>
+
+        <h3>🔄 Routes</h3>
+        <ul class="routes">
+            <li class="route-item"><strong>/svg/:emoji</strong> – Generates an SVG image of the requested emoji.
+                Example: /svg/❤️</li>
+            <li class="route-item"><strong>/png/:emoji</strong> – Generates a PNG image of the requested emoji. Example:
+                /png/💻</li>
+            <li class="route-item"><strong>/gif/:emoji</strong> – Fetches the emoji GIF from a reliable source. Example:
+                /gif/😂</li>
+            <li class="route-item"><strong>/:emoji</strong> – Returns a random image format (SVG, PNG, or GIF) for the
+                requested emoji. Example: /😊</li>
+        </ul>
+
+        <h3>🧑‍💻 Stack</h3>
+        <ul class="stack">
+            <li class="stack-item"><strong>Hono</strong> – A minimal web framework for building APIs.</li>
+            <li class="stack-item"><strong>Deno</strong> – JavaScript and TypeScript runtime.</li>
+            <li class="stack-item"><strong>Canvas</strong> – For generating PNG images with custom fonts.</li>
+            <li class="stack-item"><strong>Emoji Regex</strong> – To detect and extract emojis from strings.</li>
+            <li class="stack-item"><strong>NotoColorEmoji-Regular.ttf</strong> – Font for rendering emojis.</li>
+        </ul>
+
+        <h3>🛠 Installation</h3>
+        <p>You can add <strong>emoji-route</strong> with one command via:</p>
+        <pre><code>npm i</code></pre>
+
+        <h3>💻 Contributing</h3>
+        <p>We welcome contributions to improve <strong>emoji-route</strong>! If you have suggestions, bug fixes, or new
+            feature ideas, follow these steps:</p>
+        <ol>
+            <li><strong>Fork the Repository</strong> - Click the Fork button at the top-right of the repo page.</li>
+            <li><strong>Clone Your Fork</strong> - Clone the repo locally:
+                <pre><code>git clone https://github.com/ArnavK-09/emoji-route.git</code></pre>
+            </li>
+            <li><strong>Create a Branch</strong> - Create a new branch for your changes:
+                <pre><code>git checkout -b your-feature-branch</code></pre>
+            </li>
+            <li><strong>Make Changes</strong> - Implement your changes (bug fixes, features, etc.).</li>
+            <li><strong>Commit and Push</strong> - Commit your changes and push the branch:
+                <pre><code>git commit -m "feat(scope): description"</code></pre>
+            </li>
+            <li><strong>Open a Pull Request</strong> - Open a PR with a detailed description of your changes.</li>
+            <li><strong>Collaborate and Merge</strong> - The maintainers will review your PR, request changes if needed,
+                and merge it once approved.</li>
+        </ol>
+
+        <h3>🙋‍♂️ Issues</h3>
+        <p>Found a bug or need help? Please create an issue on the <a
+                href="https://github.com/ArnavK-09/emoji-route/issues">GitHub repository</a> with a detailed
+            description.</p>
+
+        <h3>👤 Author</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td align="center" valign="top" width="14.28%">
+                        <a href="https://github.com/ArnavK-09">
+                            <img src="https://github.com/ArnavK-09.png?s=100" width="130px;" alt="Arnav K" />
+                        </a><br />
+                        <a href="https://github.com/ArnavK-09">
+                            <h4><b>Arnav K</b></h4>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3 align="center">💖 Thanks for Using emoji-route!</h3>
+        <p align="center"><strong>If you find this project helpful, please give it a ⭐ on GitHub!</strong></p>
+
+    </div>
+
+</body>
+
+</html>
