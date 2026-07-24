@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/index.ts": {
-      "runtime": "vercel-deno@3.2.0",
+      "runtime": "nodejs20.x",
       "includeFiles": "{NotoColorEmoji-Regular.ttf,index.html}"
     }
   },

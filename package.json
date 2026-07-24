@@ -1,0 +1,21 @@
+{
+  "name": "emoji-route",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "dependencies": {
+    "@hono/node-server": "^1.13.7",
+    "@napi-rs/canvas": "^0.1.65",
+    "emoji-regex": "^10.3.0",
+    "hono": "^4.6.10"
+  },
+  "scripts": {
+    "serve": "tsx --watch main.ts",
+    "start": "tsx main.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^26.1.1",
+    "tsx": "^4.23.1",
+    "typescript": "^7.0.2"
+  }
+}

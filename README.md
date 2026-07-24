@@ -65,8 +65,8 @@ Returns a random image format (SVG, PNG, or GIF) for the requested emoji.
 This project uses the following technologies:
 
 - **Hono** – A minimal web framework for building APIs.
-- **Deno** – JavaScript and TypeScript runtime.
-- **Canvas** – For generating PNG images with custom fonts.
+- **Node.js** – JavaScript runtime on Vercel Functions.
+- **@napi-rs/canvas** – For generating PNG images with custom fonts.
 - **Emoji Regex** – To detect and extract emojis from strings.
 - **NotoColorEmoji-Regular.ttf** – Font for rendering emojis.
 
@@ -80,7 +80,7 @@ This project uses the following technologies:
 
 ```bash
 # Command For Installation
-deno install
+npm install
 ```
 
 ---
