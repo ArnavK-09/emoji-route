@@ -70,10 +70,13 @@ const pngRoute = async (c: Context): Promise<Response> => {
   const emojiParam = c.req.param("emoji"); // Retrieve the emoji from the URL parameter
   const fetchedEmoji = fetchEmojiFromString(emojiParam); // Fetch the emoji (or default emoji if none found)
 
-  c.header("Content-Type", "image/png"); // Set the response header to indicate PNG format
-
   // Return the PNG image generated from the emoji
-  return c.body(await emojiToPng(fetchedEmoji));
+  const pngBuffer = await emojiToPng(fetchedEmoji);
+  return new Response(pngBuffer.buffer as ArrayBuffer, {
+    headers: {
+      "Content-Type": "image/png",
+    },
+  });
 };
 
 const gifRoute = async (c: Context): Promise<Response> => {

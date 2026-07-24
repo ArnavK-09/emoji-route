@@ -1,11 +1,15 @@
 {
+  "$schema": "https://openapi.vercel.sh/vercel.json",
   "functions": {
     "api/index.ts": {
-      "runtime": "vercel/deno@2",
+      "runtime": "vercel-deno@3.2.0",
       "includeFiles": "{NotoColorEmoji-Regular.ttf,index.html}"
     }
   },
   "rewrites": [
-    { "source": "/((?!api/).*)", "destination": "/api" }
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/api"
+    }
   ]
 }
