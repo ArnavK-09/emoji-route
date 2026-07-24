@@ -59,16 +59,6 @@ Returns a random image format (SVG, PNG, or GIF) for the requested emoji.
 
 - Example: `/😊`
 - Response: A randomly selected image format (SVG, PNG, or GIF) of the 😊 emoji.
-
-## 🧑‍💻 Stack
-
-This project uses the following technologies:
-
-- **Node.js** – JavaScript runtime on Vercel Functions.
-- **@napi-rs/canvas** – For generating PNG images with custom fonts.
-- **Emoji Regex** – To detect and extract emojis from strings.
-- **NotoColorEmoji-Regular.ttf** – Font for rendering emojis.
-
 ---
 
 ## 🛠 Installation
@@ -142,8 +132,6 @@ detailed description.
 </table>
 
 ---
-
-<h3 align="center">💖 Thanks for Using emoji-route!</h3>
 
 <p align="center">
     <strong>If you find this project helpful, please give it a ⭐ on GitHub!</strong>
