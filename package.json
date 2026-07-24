@@ -11,10 +11,8 @@
     "start": "tsx main.ts"
   },
   "dependencies": {
-    "@hono/node-server": "^1.13.7",
     "@napi-rs/canvas": "^0.1.65",
-    "emoji-regex": "^10.3.0",
-    "hono": "^4.6.10"
+    "emoji-regex": "^10.3.0"
   },
   "devDependencies": {
     "@types/node": "^26.1.1",

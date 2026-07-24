@@ -64,7 +64,6 @@ Returns a random image format (SVG, PNG, or GIF) for the requested emoji.
 
 This project uses the following technologies:
 
-- **Hono** – A minimal web framework for building APIs.
 - **Node.js** – JavaScript runtime on Vercel Functions.
 - **@napi-rs/canvas** – For generating PNG images with custom fonts.
 - **Emoji Regex** – To detect and extract emojis from strings.
