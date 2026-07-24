@@ -1,4 +1,4 @@
-#!/usr/bin/env deno run --version v2.9.3 --include-files "{NotoColorEmoji-Regular.ttf,index.html}"
+#!/usr/bin/env deno run --include-files "{NotoColorEmoji-Regular.ttf,index.html}"
 
 import app from "../main.ts";
 
