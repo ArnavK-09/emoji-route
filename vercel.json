@@ -2,7 +2,7 @@
   "functions": {
     "api/index.ts": {
       "runtime": "vercel/deno@2",
-      "includeFiles": ["NotoColorEmoji-Regular.ttf", "index.html"]
+      "includeFiles": "{NotoColorEmoji-Regular.ttf,index.html}"
     }
   },
   "rewrites": [

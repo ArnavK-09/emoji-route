@@ -80,7 +80,7 @@ This project uses the following technologies:
 
 ```bash
 # Command For Installation
-npm i
+deno install
 ```
 
 ---
