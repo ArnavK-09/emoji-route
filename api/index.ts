@@ -21,21 +21,36 @@ const fetchEmojiFromString = (txt: string): string => {
   return emojis?.length ? emojis[0] : DEFAULT_EMOJI;
 };
 
-const emojiToSvg = (emoji: string): string =>
-  `<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 -5 128 128">
-<text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" font-size="100">${emoji}</text>
-</svg>`;
-
-const emojiToPng = async (emoji: string): Promise<Buffer> => {
-  const size = 1024;
+const emojiToPng = async (emoji: string, size = 1024): Promise<Buffer> => {
   const canvas = createCanvas(size, size);
   const ctx = canvas.getContext("2d");
 
-  ctx.font = '800px "Noto Color Emoji"';
+  // Start with a font size proportional to the canvas, leave 10% padding
+  const maxExtent = size * 0.9;
+  let fontSize = Math.floor(size * 0.75);
+  ctx.font = `${fontSize}px "Noto Color Emoji"`;
+
+  // Measure and scale down if the glyph overflows
+  const metrics = ctx.measureText(emoji);
+  if (metrics.width > maxExtent) {
+    fontSize = Math.floor(fontSize * (maxExtent / metrics.width));
+    ctx.font = `${fontSize}px "Noto Color Emoji"`;
+  }
+
+  ctx.textAlign = "center";
   ctx.textBaseline = "middle";
   ctx.fillText(emoji, size / 2, size / 2);
 
   return canvas.toBuffer("image/png");
+};
+
+const emojiToSvg = async (emoji: string): Promise<string> => {
+  // Render through canvas with Noto Color Emoji for consistent quality
+  const pngBuffer = await emojiToPng(emoji, 512);
+  const base64 = pngBuffer.toString("base64");
+  return `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<image href="data:image/png;base64,${base64}" width="512" height="512"/>
+</svg>`;
 };
 
 const emojiToUnicode = (emoji: string): string =>
@@ -44,8 +59,8 @@ const emojiToUnicode = (emoji: string): string =>
     .join(" ")
     .toLowerCase();
 
-const svgResponse = (emoji: string): Response =>
-  new Response(emojiToSvg(emoji), {
+const svgResponse = async (emoji: string): Promise<Response> =>
+  new Response(await emojiToSvg(emoji), {
     headers: { "Content-Type": "image/svg+xml" },
   });
 
