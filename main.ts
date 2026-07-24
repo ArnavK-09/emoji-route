@@ -147,5 +147,10 @@ app.get("/", async (c) => {
   return c.html(new TextDecoder().decode(await Deno.readFile("./index.html")));
 });
 
-// Start the server and listen for incoming requests
-Deno.serve(app.fetch);
+// Export the app for use as a serverless function (e.g. Vercel)
+export default app;
+
+// Start the server locally when run directly with Deno
+if (import.meta.main) {
+  Deno.serve(app.fetch);
+}

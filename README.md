@@ -2,7 +2,7 @@
 <h2 align="center">The Ultimate Route for Generating Emoji Images</h2>
 
 <p align="center">
-    <img alt="hero" width="450" src="https://emoji-route.deno.dev/gif/🎈" />
+    <img alt="hero" width="450" src="https://emoji-route.vercel.app/gif/🎈" />
 </p>
 
 > [!NOTE]
