@@ -1,15 +1,22 @@
 import { createCanvas, GlobalFonts } from "@napi-rs/canvas";
 import regexForEmoji from "emoji-regex";
-import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import fs from "node:fs";
+import path from "node:path";
 
 const DEFAULT_EMOJI = "💩";
-const FONT_PATH = join(process.cwd(), "NotoColorEmoji-Regular.ttf");
+const FONT_PATH = path.join(process.cwd(), "NotoColorEmoji-Regular.ttf");
 
 GlobalFonts.registerFromPath(FONT_PATH, "Noto Color Emoji");
 
+const readFile = fs.promises.readFile;
+
 const fetchEmojiFromString = (txt: string): string => {
-  const decoded = decodeURIComponent(txt);
+  let decoded = txt;
+  try {
+    decoded = decodeURIComponent(txt);
+  } catch {
+    // already decoded or malformed; keep raw
+  }
   const emojis = decoded.match(regexForEmoji());
   return emojis?.length ? emojis[0] : DEFAULT_EMOJI;
 };
@@ -48,13 +55,11 @@ const pngResponse = async (emoji: string): Promise<Response> =>
   });
 
 const gifResponse = async (emoji: string): Promise<Response> => {
-  let url =
-    `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiToUnicode(emoji)}/512.gif`;
+  let url = `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiToUnicode(emoji)}/512.gif`;
 
   const head = await fetch(url, { method: "HEAD" });
   if (!head.ok) {
-    url =
-      `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiToUnicode(DEFAULT_EMOJI)}/512.gif`;
+    url = `https://fonts.gstatic.com/s/e/notoemoji/latest/${emojiToUnicode(DEFAULT_EMOJI)}/512.gif`;
   }
 
   const gif = await fetch(url);
@@ -94,7 +99,11 @@ export async function handler(req: Request): Promise<Response> {
     return randomResponse(emoji);
   }
 
-  const html = await readFile(join(process.cwd(), "index.html"), "utf-8");
+  const html = await readFile(
+    path.join(process.cwd(), "index.html"),
+    "utf-8",
+  );
+
   return new Response(html, {
     headers: { "Content-Type": "text/html" },
   });
